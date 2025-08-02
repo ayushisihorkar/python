@@ -160,7 +160,7 @@ class Notification(Base):
     severity = Column(String, default="info")  # info, warning, error, critical
     read = Column(Boolean, default=False)
     action_required = Column(Boolean, default=False)
-    metadata = Column(JSON)
+    notification_metadata = Column(JSON)
     
     created_at = Column(DateTime, default=func.now())
     read_at = Column(DateTime)

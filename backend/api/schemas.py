@@ -57,7 +57,7 @@ class TelemetryData(BaseModel):
 class BookingBase(BaseModel):
     vehicle_id: int
     service_type: str = Field(default="maintenance", description="Type of service")
-    priority: str = Field(default="normal", regex="^(low|normal|high|critical)$")
+    priority: str = Field(default="normal", pattern="^(low|normal|high|critical)$")
 
 class BookingCreate(BookingBase):
     pass
@@ -89,18 +89,18 @@ class BookingResponse(BookingBase):
 class EmergencyAlert(BaseModel):
     vehicle_id: int
     issue: str
-    severity: str = Field(regex="^(warning|critical|emergency)$")
+    severity: str = Field(pattern="^(warning|critical|emergency)$")
     location: Optional[str] = None
     details: Optional[Dict[str, Any]] = None
 
 class FleetReportRequest(BaseModel):
     company_id: str = "all"
-    report_type: str = Field(default="health", regex="^(health|maintenance|utilization)$")
+    report_type: str = Field(default="health", pattern="^(health|maintenance|utilization)$")
 
 # Test scenarios
 class TestScenario(BaseModel):
     vehicle_id: int
-    scenario_type: str = Field(regex="^(critical_battery|emergency|maintenance_due|motor_overheat|cooling_failure)$")
+    scenario_type: str = Field(pattern="^(critical_battery|emergency|maintenance_due|motor_overheat|cooling_failure)$")
     parameters: Optional[Dict[str, Any]] = None
 
 # WebSocket message schemas

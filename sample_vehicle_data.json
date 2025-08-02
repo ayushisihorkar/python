@@ -1,0 +1,248 @@
+{
+  "vehicles": [
+    {
+      "id": "V001",
+      "make": "Toyota",
+      "model": "Camry",
+      "year": 2022,
+      "license_plate": "ABC123",
+      "status": "active",
+      "location": "Downtown Garage",
+      "health_score": 85,
+      "last_maintenance": "2024-01-15T10:00:00Z",
+      "mileage": 45000,
+      "fuel_level": 75.5
+    },
+    {
+      "id": "V002",
+      "make": "Honda",
+      "model": "Civic",
+      "year": 2021,
+      "license_plate": "XYZ789",
+      "status": "maintenance",
+      "location": "Suburban Lot",
+      "health_score": 45,
+      "last_maintenance": "2024-01-10T14:30:00Z",
+      "mileage": 62000,
+      "fuel_level": 25.0
+    },
+    {
+      "id": "V003",
+      "make": "Ford",
+      "model": "Escape",
+      "year": 2023,
+      "license_plate": "DEF456",
+      "status": "active",
+      "location": "Airport Terminal",
+      "health_score": 92,
+      "last_maintenance": "2024-01-20T09:15:00Z",
+      "mileage": 28000,
+      "fuel_level": 90.0
+    },
+    {
+      "id": "V004",
+      "make": "Chevrolet",
+      "model": "Malibu",
+      "year": 2020,
+      "license_plate": "GHI789",
+      "status": "out_of_service",
+      "location": "Repair Shop",
+      "health_score": 25,
+      "last_maintenance": "2024-01-05T16:45:00Z",
+      "mileage": 78000,
+      "fuel_level": 10.0
+    },
+    {
+      "id": "V005",
+      "make": "Nissan",
+      "model": "Altima",
+      "year": 2022,
+      "license_plate": "JKL012",
+      "status": "active",
+      "location": "City Center",
+      "health_score": 78,
+      "last_maintenance": "2024-01-18T11:20:00Z",
+      "mileage": 38000,
+      "fuel_level": 60.0
+    }
+  ],
+  "telemetry_samples": [
+    {
+      "vehicle_id": "V001",
+      "engine_temp": 85.5,
+      "oil_pressure": 45.2,
+      "battery_voltage": 12.8,
+      "tire_pressure": 32.0,
+      "fuel_level": 75.5,
+      "mileage": 45000,
+      "speed": 35.0,
+      "latitude": 40.7128,
+      "longitude": -74.0060,
+      "timestamp": "2024-01-25T10:30:00Z"
+    },
+    {
+      "vehicle_id": "V002",
+      "engine_temp": 95.2,
+      "oil_pressure": 18.5,
+      "battery_voltage": 11.2,
+      "tire_pressure": 28.0,
+      "fuel_level": 25.0,
+      "mileage": 62000,
+      "speed": 0.0,
+      "latitude": 40.7589,
+      "longitude": -73.9851,
+      "timestamp": "2024-01-25T10:30:00Z"
+    },
+    {
+      "vehicle_id": "V003",
+      "engine_temp": 82.1,
+      "oil_pressure": 48.0,
+      "battery_voltage": 13.1,
+      "tire_pressure": 33.5,
+      "fuel_level": 90.0,
+      "mileage": 28000,
+      "speed": 45.0,
+      "latitude": 40.6413,
+      "longitude": -73.7781,
+      "timestamp": "2024-01-25T10:30:00Z"
+    },
+    {
+      "vehicle_id": "V004",
+      "engine_temp": 105.8,
+      "oil_pressure": 12.0,
+      "battery_voltage": 10.5,
+      "tire_pressure": 25.0,
+      "fuel_level": 10.0,
+      "mileage": 78000,
+      "speed": 0.0,
+      "latitude": 40.7505,
+      "longitude": -73.9934,
+      "timestamp": "2024-01-25T10:30:00Z"
+    },
+    {
+      "vehicle_id": "V005",
+      "engine_temp": 88.3,
+      "oil_pressure": 42.8,
+      "battery_voltage": 12.5,
+      "tire_pressure": 31.0,
+      "fuel_level": 60.0,
+      "mileage": 38000,
+      "speed": 28.0,
+      "latitude": 40.7549,
+      "longitude": -73.9840,
+      "timestamp": "2024-01-25T10:30:00Z"
+    }
+  ],
+  "maintenance_tasks": [
+    {
+      "vehicle_id": "V002",
+      "task_type": "oil_change",
+      "urgency": "high",
+      "estimated_duration": 1,
+      "estimated_cost": 50.0,
+      "description": "Oil change due to low oil pressure",
+      "status": "pending"
+    },
+    {
+      "vehicle_id": "V004",
+      "task_type": "engine_repair",
+      "urgency": "critical",
+      "estimated_duration": 4,
+      "estimated_cost": 500.0,
+      "description": "Engine overheating, requires immediate attention",
+      "status": "in_progress"
+    },
+    {
+      "vehicle_id": "V001",
+      "task_type": "tire_rotation",
+      "urgency": "medium",
+      "estimated_duration": 1,
+      "estimated_cost": 30.0,
+      "description": "Regular tire rotation service",
+      "status": "scheduled"
+    }
+  ],
+  "bookings": [
+    {
+      "booking_id": "B001",
+      "vehicle_id": "V002",
+      "workshop_id": "ws_001",
+      "workshop_name": "Premium Auto Service",
+      "task_type": "oil_change",
+      "scheduled_date": "2024-01-26",
+      "scheduled_time": "09:00",
+      "estimated_duration": 1,
+      "estimated_cost": 60.0,
+      "urgency": "high",
+      "status": "scheduled"
+    },
+    {
+      "booking_id": "B002",
+      "vehicle_id": "V004",
+      "workshop_id": "ws_001",
+      "workshop_name": "Premium Auto Service",
+      "task_type": "engine_repair",
+      "scheduled_date": "2024-01-25",
+      "scheduled_time": "14:00",
+      "estimated_duration": 4,
+      "estimated_cost": 600.0,
+      "urgency": "critical",
+      "status": "in_progress"
+    }
+  ],
+  "alerts": [
+    {
+      "id": "alert_001",
+      "vehicle_id": "V002",
+      "type": "critical",
+      "message": "Low oil pressure detected",
+      "timestamp": "2024-01-25T10:30:00Z",
+      "action_required": true
+    },
+    {
+      "id": "alert_002",
+      "vehicle_id": "V004",
+      "type": "critical",
+      "message": "Engine overheating - immediate attention required",
+      "timestamp": "2024-01-25T10:30:00Z",
+      "action_required": true
+    },
+    {
+      "id": "alert_003",
+      "vehicle_id": "V002",
+      "type": "warning",
+      "message": "Battery voltage below optimal level",
+      "timestamp": "2024-01-25T10:30:00Z",
+      "action_required": true
+    }
+  ],
+  "workshops": [
+    {
+      "id": "ws_001",
+      "name": "Premium Auto Service",
+      "location": "Downtown",
+      "services": ["oil_change", "tire_rotation", "battery_replacement", "brake_service"],
+      "rating": 4.8,
+      "cost_multiplier": 1.2,
+      "email": "premium@autoservice.com"
+    },
+    {
+      "id": "ws_002",
+      "name": "Quick Fix Garage",
+      "location": "Suburbs",
+      "services": ["oil_change", "tire_rotation", "battery_replacement"],
+      "rating": 4.2,
+      "cost_multiplier": 0.9,
+      "email": "quickfix@garage.com"
+    },
+    {
+      "id": "ws_003",
+      "name": "Express Maintenance",
+      "location": "Airport Area",
+      "services": ["oil_change", "tire_rotation"],
+      "rating": 4.5,
+      "cost_multiplier": 1.0,
+      "email": "express@maintenance.com"
+    }
+  ]
+} 

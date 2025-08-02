@@ -1,325 +1,251 @@
-# Rental Fleet Dashboard
+# Fleet Maintenance Dashboard
 
-An AI-powered rental fleet management system with predictive maintenance capabilities, built with FastAPI backend and React frontend.
+A modern, AI-powered rental fleet maintenance dashboard built with a multi-agent system architecture. This application provides real-time vehicle monitoring, predictive maintenance scheduling, and automated booking workflows for electric vehicle fleets.
 
 ## 🚀 Features
 
-### AI Agents
-- **Health Monitor Agent**: Detects anomalies and predicts maintenance needs using machine learning
-- **Planner Agent**: Optimizes maintenance scheduling with workshop availability
-- **Communicator Agent**: Handles notifications to rental companies and workshops
-- **Logger Agent**: Maintains comprehensive audit trails and maintenance history
-- **Orchestrator Agent**: Coordinates multi-agent workflows and system management
+### Multi-Agent AI System
+- **Health Monitor Agent**: Detects anomalies in vehicle telemetry and predicts service needs
+- **Planner Agent**: Coordinates booking schedules and finds nearby workshops
+- **Communicator Agent**: Sends notifications and alerts to fleet managers and workshops
+- **Logger Agent**: Maintains comprehensive vehicle health history and service logs
+
+### Modern Dashboard Interface
+- **Card-based UI**: Clean, spacious design with vehicle images and real-time stats
+- **Real-time Updates**: WebSocket connections for live vehicle status updates
+- **AI Assistant**: Interactive chat interface for fleet management assistance
+- **Responsive Design**: Works seamlessly on desktop and mobile devices
 
 ### Core Functionality
-- **Real-time Vehicle Monitoring**: Live telemetry data analysis
-- **Predictive Maintenance**: AI-driven maintenance predictions
-- **Smart Scheduling**: Automated workshop booking optimization
-- **Alert System**: Critical issue detection and notification
-- **Analytics Dashboard**: Fleet health and cost analysis
-- **AI Assistant**: Intelligent help and recommendations
+- Vehicle telemetry monitoring (battery health, motor efficiency, cooling system)
+- Predictive maintenance scheduling with AI-powered insights
+- Automated workshop booking with availability checking
+- Real-time anomaly detection and alerting
+- Comprehensive reporting and analytics
 
 ## 🏗️ Architecture
 
+### Backend (FastAPI + SQLAlchemy)
 ```
-rental-fleet-dashboard/
-│
-├── backend/
-│   ├── agents/                 # AI Agent System
-│   │   ├── health_monitor.py   # Anomaly detection & maintenance prediction
-│   │   ├── planner.py          # Workshop scheduling optimization
-│   │   ├── communicator.py     # Notification management
-│   │   ├── logger.py           # Audit trails & history
-│   │   └── orchestrator.py     # Multi-agent coordination
-│   │
-│   ├── api/                    # FastAPI Backend
-│   │   ├── main.py            # API routes and endpoints
-│   │   ├── models.py          # Pydantic models & schemas
-│   │   ├── database.py        # SQLAlchemy ORM setup
-│   │   └── crud.py            # Database operations
-│   │
-│   ├── data/                   # Sample Data
-│   │   └── sample_vehicle_data.json
-│   │
-│   └── requirements.txt        # Python dependencies
-│
-├── frontend/                   # React Frontend
-│   ├── src/
-│   │   ├── components/         # React Components
-│   │   │   ├── VehicleCard.jsx
-│   │   │   ├── BookingCalendar.jsx
-│   │   │   ├── AIAssistantPanel.jsx
-│   │   │   └── Notifications.jsx
-│   │   │
-│   │   ├── pages/             # Page Components
-│   │   │   ├── Dashboard.jsx
-│   │   │   └── VehicleDetail.jsx
-│   │   │
-│   │   ├── services/          # API Integration
-│   │   │   └── api.js
-│   │   │
-│   │   ├── App.jsx
-│   │   └── index.js
-│   │
-│   ├── styles/
-│   │   └── tailwind.css       # TailwindCSS configuration
-│   │
-│   └── package.json           # Node.js dependencies
-│
-└── README.md
+backend/
+├── main.py                 # FastAPI application entry point
+├── database/
+│   ├── models.py          # SQLAlchemy database models
+│   └── database.py        # Database connection and initialization
+├── agents/
+│   ├── base_agent.py      # Base agent class with common functionality
+│   ├── health_monitor_agent.py    # Vehicle health monitoring
+│   ├── planner_agent.py           # Booking and scheduling
+│   ├── communicator_agent.py      # Notifications and alerts
+│   ├── logger_agent.py            # Data logging and history
+│   └── agent_coordinator.py       # Multi-agent orchestration
+└── api/
+    ├── routes.py          # API endpoints
+    ├── schemas.py         # Pydantic models
+    └── websocket.py       # Real-time WebSocket manager
 ```
 
-## 🛠️ Technology Stack
+### Frontend (React + TailwindCSS)
+```
+src/
+├── components/
+│   ├── VehicleCard.jsx    # Main vehicle display component
+│   ├── AIAssistant.jsx    # Interactive AI chat interface
+│   └── Layout.jsx         # Application layout and navigation
+├── pages/
+│   ├── Dashboard.jsx      # Main fleet overview
+│   ├── VehicleDetail.jsx  # Individual vehicle details
+│   └── BookingManagement.jsx  # Maintenance scheduling
+├── hooks/
+│   └── useWebSocket.jsx   # WebSocket connection management
+└── App.jsx               # Main application component
+```
 
-### Backend
-- **FastAPI**: Modern Python web framework
-- **SQLAlchemy**: Database ORM
-- **SQLite/PostgreSQL**: Database
-- **Scikit-learn**: Machine learning for anomaly detection
-- **Pydantic**: Data validation and serialization
-
-### Frontend
-- **React 18**: Modern React with hooks
-- **TailwindCSS**: Utility-first CSS framework
-- **Framer Motion**: Animation library
-- **Lucide React**: Icon library
-- **Axios**: HTTP client
-- **React Router**: Client-side routing
-
-## 🚀 Quick Start
+## 🛠️ Installation & Setup
 
 ### Prerequisites
 - Python 3.8+
-- Node.js 16+
+- Node.js 18+
 - npm or yarn
 
 ### Backend Setup
+1. Navigate to the backend directory:
+```bash
+cd backend
+```
 
-1. **Navigate to backend directory**:
-   ```bash
-   cd backend
-   ```
+2. Create a virtual environment:
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
 
-2. **Create virtual environment**:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
+3. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
 
-3. **Install dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Run the backend server**:
-   ```bash
-   uvicorn api.main:app --reload --host 0.0.0.0 --port 8000
-   ```
+4. Start the FastAPI server:
+```bash
+python main.py
+```
 
 The API will be available at `http://localhost:8000`
-API documentation at `http://localhost:8000/docs`
 
 ### Frontend Setup
+1. Install dependencies:
+```bash
+npm install
+```
 
-1. **Navigate to frontend directory**:
-   ```bash
-   cd frontend
-   ```
+2. Start the development server:
+```bash
+npm run dev
+```
 
-2. **Install dependencies**:
-   ```bash
-   npm install
-   ```
-
-3. **Start the development server**:
-   ```bash
-   npm start
-   ```
-
-The frontend will be available at `http://localhost:3000`
+The application will be available at `http://localhost:3000`
 
 ## 📊 API Endpoints
 
-### Vehicles
-- `GET /vehicles` - Get all vehicles
-- `GET /vehicles/{id}` - Get specific vehicle
-- `POST /vehicles` - Create new vehicle
-- `PUT /vehicles/{id}` - Update vehicle
-- `DELETE /vehicles/{id}` - Delete vehicle
+### Vehicle Management
+- `GET /api/vehicles` - List all vehicles with filtering options
+- `GET /api/vehicles/{id}` - Get detailed vehicle information
+- `POST /api/vehicles` - Create a new vehicle
+- `POST /api/vehicles/{id}/telemetry` - Ingest vehicle telemetry data
+- `POST /api/vehicles/{id}/health-check` - Perform AI health assessment
 
-### Telemetry
-- `POST /telemetry` - Submit vehicle telemetry
-- `GET /vehicles/{id}/telemetry` - Get telemetry history
-- `GET /vehicles/{id}/telemetry/latest` - Get latest telemetry
+### Booking Management
+- `GET /api/bookings` - List bookings with filtering
+- `POST /api/bookings` - Create new maintenance booking
+- `PUT /api/bookings/{id}` - Update existing booking
+- `DELETE /api/bookings/{id}` - Cancel booking
+- `GET /api/bookings/workshops/available` - Find available workshops
 
-### Health Analysis
-- `GET /vehicles/{id}/health` - Get health analysis
-- `GET /vehicles/{id}/health/history` - Get health history
+### Health Monitoring
+- `GET /api/health/agent-status` - Get status of all AI agents
+- `POST /api/health/emergency` - Handle emergency situations
+- `POST /api/health/fleet-report` - Generate fleet health reports
+- `GET /api/health/notifications` - Get notifications for recipients
 
-### Maintenance
-- `POST /maintenance/tasks` - Create maintenance task
-- `GET /maintenance/tasks` - Get maintenance tasks
-- `PUT /maintenance/tasks/{id}` - Update maintenance task
+### Test Simulation
+- `POST /api/health/test-scenario` - Simulate various test scenarios:
+  - `critical_battery` - Simulate critical battery conditions
+  - `emergency` - Simulate emergency situations
+  - `maintenance_due` - Simulate routine maintenance needs
 
-### Bookings
-- `POST /bookings` - Create booking
-- `GET /bookings` - Get bookings
-- `GET /bookings/{id}` - Get specific booking
-- `PUT /bookings/{id}` - Update booking
-- `DELETE /bookings/{id}` - Cancel booking
+## 🧪 Testing the System
 
-### Analytics
-- `GET /analytics/fleet` - Get fleet analytics
-- `GET /reports/fleet` - Generate fleet report
+### Simulate Vehicle Data
+You can test the multi-agent system by sending telemetry data:
 
-## 🤖 AI Agent System
+```bash
+curl -X POST "http://localhost:8000/api/vehicles/1/telemetry" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "battery_soh": 65.0,
+    "battery_temp": 47.0,
+    "voltage_imbalance": 0.6,
+    "motor_efficiency": 78.0,
+    "coolant_level": 15.0,
+    "error_codes": ["BATT_001", "TEMP_002"]
+  }'
+```
 
-### Health Monitor Agent
-- **Anomaly Detection**: Uses isolation forest algorithm
-- **Maintenance Prediction**: Based on mileage and component health
-- **Health Scoring**: 0-100 score based on multiple factors
-- **Alert Generation**: Automatic alert creation for critical issues
+### Test Emergency Scenarios
+```bash
+curl -X POST "http://localhost:8000/api/health/test-scenario" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "vehicle_id": 1,
+    "scenario_type": "critical_battery"
+  }'
+```
 
-### Planner Agent
-- **Workshop Optimization**: Finds best available workshops
-- **Scheduling Algorithm**: Considers cost, rating, and availability
-- **Time Slot Management**: Optimizes booking times
-- **Cost Analysis**: Estimates maintenance costs
+## 🎨 Design System
 
-### Communicator Agent
-- **Email Notifications**: HTML email templates
-- **SMS Integration**: Ready for Twilio integration
-- **Priority Handling**: Emergency notifications
-- **Workshop Communication**: Automated booking confirmations
+The application uses a modern design system with:
+- **Color Palette**: Primary blue theme with semantic status colors
+- **Typography**: Inter font family for clean, professional appearance
+- **Components**: Reusable card-based components with consistent styling
+- **Icons**: Lucide React icons for consistent visual language
+- **Spacing**: Tailwind's spacing system for consistent layouts
 
-### Logger Agent
-- **Audit Trails**: Complete system activity logging
-- **Maintenance History**: Detailed service records
-- **Health Logs**: Vehicle health tracking over time
-- **Report Generation**: Export capabilities
+### Status Indicators
+- 🟢 **Operational**: Vehicle is functioning normally
+- 🟡 **Warning**: Vehicle needs attention soon
+- 🔴 **Critical**: Immediate action required
+- 🔵 **Maintenance**: Vehicle is currently being serviced
 
-### Orchestrator Agent
-- **Workflow Coordination**: Manages multi-agent interactions
-- **System State Management**: Tracks fleet status
-- **Emergency Handling**: Critical issue response
-- **Performance Monitoring**: System health tracking
+## 🤖 AI Agent Workflows
 
-## 🎨 UI Features
+### Vehicle Telemetry Processing
+1. **Logger Agent**: Stores incoming telemetry data
+2. **Health Monitor**: Analyzes data for anomalies
+3. **Planner Agent**: Schedules maintenance if issues found
+4. **Communicator**: Sends notifications to relevant parties
 
-### Dashboard
-- **Real-time Stats**: Fleet overview with live metrics
-- **Vehicle Cards**: Individual vehicle status and health
-- **Search & Filter**: Advanced vehicle filtering
-- **AI Assistant**: Floating chat interface
-
-### Vehicle Details
-- **Live Telemetry**: Real-time vehicle data
-- **Health Analysis**: Detailed health breakdown
-- **Maintenance History**: Complete service records
-- **Quick Actions**: One-click maintenance scheduling
-
-### Booking Calendar
-- **Interactive Calendar**: Date and time selection
-- **Workshop Comparison**: Rating and cost comparison
-- **Service Selection**: Maintenance type selection
-- **Cost Estimation**: Real-time cost calculation
-
-### Notifications
-- **Alert Management**: Critical and warning alerts
-- **Filter System**: Alert type filtering
-- **Read/Unread**: Alert status tracking
-- **Bulk Actions**: Mark all as read
+### Emergency Handling
+1. **Immediate Alert**: Critical notifications sent to fleet managers
+2. **Emergency Booking**: Highest priority maintenance scheduling
+3. **Status Update**: Vehicle marked as critical in system
+4. **Follow-up**: Automated progress tracking and updates
 
 ## 🔧 Configuration
 
-### Environment Variables
+### Database
+The application uses SQLite by default for development. For production, update the `DATABASE_URL` environment variable:
+
 ```bash
-# Backend
-DATABASE_URL=sqlite:///./rental_fleet.db
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=587
-SMTP_USERNAME=your-email@gmail.com
-SMTP_PASSWORD=your-app-password
-
-# Frontend
-REACT_APP_API_URL=http://localhost:8000
+export DATABASE_URL="postgresql://user:password@localhost/fleet_db"
 ```
 
-### Database Setup
-The system uses SQLite by default. For production, configure PostgreSQL:
-
-```python
-# backend/api/database.py
-DATABASE_URL = "postgresql://user:password@localhost/rental_fleet"
-```
-
-## 🧪 Testing
-
-### Backend Tests
-```bash
-cd backend
-python -m pytest tests/
-```
-
-### Frontend Tests
-```bash
-cd frontend
-npm test
-```
-
-## 📈 Performance
-
-- **Real-time Updates**: WebSocket support for live data
-- **Optimized Queries**: Database indexing and query optimization
-- **Caching**: Redis integration ready
-- **Scalability**: Microservices architecture ready
-
-## 🔒 Security
-
-- **Input Validation**: Pydantic model validation
-- **SQL Injection Protection**: SQLAlchemy ORM
-- **CORS Configuration**: Cross-origin request handling
-- **Rate Limiting**: API rate limiting ready
+### Agent Configuration
+Agent thresholds and behaviors can be configured in the respective agent classes:
+- Battery health thresholds in `health_monitor_agent.py`
+- Booking priorities in `planner_agent.py`
+- Notification templates in `communicator_agent.py`
 
 ## 🚀 Deployment
 
-### Docker Deployment
+### Backend Deployment
+1. Set up environment variables for production database
+2. Use a WSGI server like Gunicorn:
 ```bash
-# Build and run with Docker Compose
-docker-compose up --build
+gunicorn main:app -w 4 -k uvicorn.workers.UvicornWorker
 ```
 
-### Production Setup
-1. Configure environment variables
-2. Set up PostgreSQL database
-3. Configure SMTP for notifications
-4. Set up SSL certificates
-5. Configure reverse proxy (nginx)
+### Frontend Deployment
+1. Build the production bundle:
+```bash
+npm run build
+```
+
+2. Serve the built files with any static file server
+
+## 📈 Future Enhancements
+
+- **Advanced Analytics**: Machine learning models for better predictions
+- **Mobile App**: Native mobile application for field technicians
+- **Integration APIs**: Connect with existing fleet management systems
+- **Advanced Reporting**: Custom report builder with data visualization
+- **Multi-tenant Support**: Support for multiple fleet operators
 
 ## 🤝 Contributing
 
 1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests
-5. Submit a pull request
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-## 📝 License
+## 📄 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 🆘 Support
+## 📞 Support
 
-For support and questions:
-- Create an issue in the repository
-- Check the API documentation at `/docs`
-- Review the code comments for implementation details
+For questions and support, please open an issue in the GitHub repository or contact the development team.
 
-## 🔮 Future Enhancements
+---
 
-- **Machine Learning**: Advanced predictive models
-- **IoT Integration**: Real vehicle sensor data
-- **Mobile App**: React Native mobile application
-- **Blockchain**: Maintenance record verification
-- **AR/VR**: Virtual vehicle inspection
-- **Voice Commands**: AI assistant voice interface 
+Built with ❤️ for modern fleet management 
